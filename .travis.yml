@@ -1,0 +1,26 @@
+language: r
+cache: packages
+pandoc_version: 1.19.2.1
+
+env:
+  global:
+    - secure: "VmKEhdJw+5aLNoIz7BE/MPh/kUcYoCq1rT8GCJGs2xF8A0sSWEJhU+Q1XkU6dXvsp/ASbfVHgMRe34oh6qpHRKkV07H4Aa430znRD4VZi9xCXb8JRaeJRDzRg5FMvG+i1hYZ7iPezzZNSHPBgXZQDdrFn8LWZIODpD7z29R6dgwMR0388PWre/80mHg87k4IQVlkW0+bJ3LVJEY0ONRKxWeRK21ACmzKAwXIeBZg+udYAWVlpwixTbQwEsy3vdRISuYzAc81swxxONqrPTHf31AYbBncQNYfUQhVysFPgDmEOWrEGVs1QbRjFBrpKDe75VC0JuX4UGXU5RfqJGscXvC6hxn9oJSnNHfqwxTIQ2yxDdnq/ImcXzmxVA/BsZqvPIwVz0RVltl+2vDE3cSGaiqbVbQfv+g45L990w6qBRI0hyOFxzdoH7Zob8syIkR07cmmSkNrrvQlpmjjz3+AS7a3wLKQwxhH3HDAbHfm1tHAS+9HIgv+sVYm2JZlTt+Pd8ws5cddX5I3CW4OP6+1Xk4+C0WvV02aHwp2ak7VKjvfQdiEuk3OtKsgMN4/3tOfu09YX8DXS67P3HZ/O1tyBH/Zr4KPM/sypqizer28YvKjC6eTIxUvIGnhVt5sLM2uqD3D0lMlO0mHgAKpMFAOA/Fovcz2hK35WpERwntorLA="
+
+before_install:
+  - sudo fallocate -l 10G /swapfile && sudo chmod 600 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile
+  - sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
+  - sudo apt-get update
+  - sudo apt-get install libudunits2-dev libgdal-dev libgeos-dev libproj-dev r-cran-rsymphony
+
+before_script:
+  - chmod +x ./_build.sh
+  - chmod +x ./_deploy.sh
+
+script:
+  - ./_build.sh
+  - ./_deploy.sh
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
