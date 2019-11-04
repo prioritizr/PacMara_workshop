@@ -1,0 +1,32 @@
+---
+title: "PRIORITIZR WORKSHOP MANUAL"
+author: "Jeffrey O. Hanson (with modifications by Richard Schuster)"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: references.bib
+csl: reference-style.csl
+url: 'https\://prioritizr.github.io/PacMara_workshop'
+link-citations: yes
+cover-image: images/cover.png
+favicon: favicon.ico
+github-repo: prioritizr/PacMara_workshop
+fontsize: 12pt
+urlcolor: blue
+geometry: "left=2.54cm, right=2.54cm, top=2.54cm, bottom=2.54cm"
+description: "Manual for the prioritizr module of the Introduction to Marxan & MarZone & Prioritizr - Training Course held at University of Victoria, Victoria, Canada."
+---
+
+# Welcome!
+
+```{r, echo=FALSE, results="asis", include = knitr:::is_html_output()}
+cat("<img src=\"cover.png\" width=\"250\" height=\"250\" alt=\"Cover image\" align=\"right\" style=\"margin: 0 1em 0 1em\" />\n")
+```
+
+Here you will find the manual for the prioritizr module of the [_Introduction to Marxan & MarZone & Prioritizr - Training Course_](https://pacmara.org/) held at University of Victoria, Victoria, Canada. **Before you arrive at the workshop, you should make sure that you have correctly [set up your computer for the workshop][Setting up your computer] and you have [downloaded the data from here](https://github.com/prioritizr/PacMara_workshop/raw/master/data.zip). We cannot guarantee a reliable Internet connection during the workshop, and so you may be unable to complete the workshop if you have not set up your computer beforehand.**
+
+```{r, include = FALSE}
+# set knitr options
+knitr::opts_chunk$set(fig.align = "center")
+knitr::opts_chunk$set(cache = TRUE)
+```

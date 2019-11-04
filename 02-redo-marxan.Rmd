@@ -1,0 +1,251 @@
+# Redo Marxan analysis {#marxan-analysis}
+
+## Introduction
+
+Before we begin to prioritize areas for protected area establishment using the full feature set of _prioritizr_, we will re-do the Marxan analysis from Tuesday in _prioritizr_. This exercise is meant to show you how you can use your current Marxan files in prioritizr, if you choose to do so. Once we have run the example using input.dat, as well as the individual .dat files, we will also work on preparing the data you worked with on Monday to be used in prioritzr. Once that's complete, we will run our first _prioritizr_ analysis, using the notation typical for prioritizr analysis.
+
+
+## Starting out
+
+We will start by opening RStudio. Ideally, you will have already installed both R and Rstudio before the workshop. If you have not done this already, then please see the [Setting up your computer] section. **During this workshop, please do not copy and paste code from the workshop manual into RStudio. Instead, please write it out yourself in an R script.** When programming, you will spend a lot of time fixing coding mistakes---that is, debugging your code---so it is best to get used to making mistakes now when you have people here to help you. You can create a new R script by clicking on _File_ in the RStudio menu bar, then _New File_, and then _R Script_.
+
+```{r, out.width = "70%", echo = FALSE}
+knitr::include_graphics("images/rstudio-new-script.png")
+```
+
+After creating a new script, you will notice that a new _Source_ panel has appeared. In the _Source_ panel, you can type and edit code before you run it. You can run code in the _Source_ panel by placing the cursor (i.e. the blinking line) on the desired line of code and pressing `Control + Enter` on your keyboard (or `CMD + Enter` if you are using an Apple computer). You can save the code in the _Source_ panel by pressing `Control + s` on your keyboard (or `CMD + s` if you are using an Apple computer).
+
+```{r, out.width = "70%", echo = FALSE}
+knitr::include_graphics("images/rstudio-source.png")
+```
+
+You can also make notes and write your answers to the workshop questions inside the R script. When writing notes and answers, add a `#` symbol so that the text following the `#` symbol is treated as a comment and not code. This means that you don't have to worry about highlighting specific parts of the script to avoid errors.
+
+```{r}
+# this is a comment and R will ignore this text if you run it
+# R will run the code below because it does not start with a # symbol
+print("this is not a comment")
+
+# you can also add comments to the same line of R code too
+print("this is also not a comment") # but this is a comment
+```
+
+**Remember to save your script regularly to ensure that you don't lose anything in the event that RStudio crashes (e.g. using `Control + s` or `CMD + s`)!**
+
+## Attaching packages
+
+Now we will set up our R session for the workshop. Specifically, enter the following R code to attach the R packages used in this workshop.
+
+```{r, message = FALSE}
+# load packages
+library(tidyverse)
+library(prioritizr)
+library(rgdal)
+library(raster)
+library(rgeos)
+library(mapview)
+library(units)
+library(scales)
+library(assertthat)
+library(gridExtra)
+library(data.table)
+library(readxl)
+```
+
+
+## Base analysis on input.dat
+
+Now we will redo the Marxan analyis you have done on Tuesday, but using _prioritzr_. To do so we need the _Marxan database_ you used on Tuesday, as well we the _raw data_ you used on Monday. The files for both are already included in the R Studio project you received for this exercise. Now please open the *PacMara_workshop.Rproj* file by double clicking it. You are now ready to start with the exercise.
+
+First, we are going to use the information from the input.dat file to run the analysis you completed on Tuesday, using _prioritzr_. To do so, all you need to do is point to input.dat and tell _prioritizr_ where to find it. Once that's done we can generate the problem and solve it.
+
+```{r}
+input_file <- "Marxan_database/input.dat"
+
+p1 <- marxan_problem(input_file)
+
+s1 <- solve(p1)
+```
+
+
+Next, we are going to have a look at the solution and explore the output by first displaying a couple of rows from the output data, then counting the number of planning units in the solution and calcualating the proportion of planning units in the solution. 
+
+```{r}
+head(s1)
+
+# count number of planning units in solution
+sum(s1$solution_1)
+
+
+# proportion of planning units in solution
+mean(s1$solution_1)
+```
+
+
+Next we are going to explore how well the features are represented in the solution.
+
+```{r}
+
+# calculate feature representation
+r1 <- feature_representation(p1, s1[, "solution_1", drop = FALSE])
+print(r1)
+
+```
+
+Finally, we are going to visualize the solution by converting the solution to a spatial object.
+```{r}
+pulayer <- readOGR("Marxan_database/pulayer/pulayer_BC_marine.shp", stringsAsFactors = FALSE)
+
+pulayer1 <- pulayer
+pulayer1$solution_1 <- s1$solution_1
+pulayer1$solution_1 <- factor(pulayer1$solution_1)
+spplot(pulayer1, "solution_1", col.regions = c("grey90", "darkgreen"),
+       main = "marxan_problem solution")
+
+```
+
+Now, think about the following questions.
+
+```{block2, type="rmdquestion"}
+1. Are the results from Marxan and prioritizr the same/similar?
+2. If you see differences, why do you think those differences occur?
+3. Can you think of ways to reduce difference/improve outcomes?
+```
+
+\clearpage
+
+
+## Base analysis using individual .dat files
+
+Now, lets redo the analysis, but instead of using input.dat, we will use the individual .dat files to create the problem. You will see that the syntax for the problem formulation is very similar, but instead of supplying one value to the _marxan_problem_ function, we now specify _pu_, _spec_, _puvsp_ and _bound_. If you want to learn more about the _marxan_problem_ function, just type in `?marxan_problem` and you can have a look at the function help page. 
+
+```{r}
+pu <- fread("Marxan_database/input/pu.dat", data.table = FALSE)
+spec <- fread("Marxan_database/input/spec.dat", data.table = FALSE)
+puvsp <- fread("Marxan_database/input/puvsp.dat", data.table = FALSE)
+bound <- fread("Marxan_database/input/bound.dat", data.table = FALSE)
+
+p2 <- marxan_problem(x = pu, spec = spec, puvspr = puvsp)
+
+s2 <- solve(p2)
+
+# count number of planning units in solution
+sum(s2$solution_1)
+
+
+# proportion of planning units in solution
+mean(s2$solution_1)
+
+
+# calculate feature representation
+r2 <- feature_representation(p2, s2[, "solution_1", drop = FALSE])
+print(r2)
+```
+
+
+## Recreate the Marxan analysis starting from the raw data
+
+Now that we have solved a problem that was formatted the way Marxan needs data, lets go ahead and start from the raw data, as you did on Monday.
+
+We will first process the data, so we can use it in _prioriztr_ and then we will create the problem and solve it in the 'standard' _prioritizr_ way.
+
+Starting with the raw data from folder _Marxan_Data_ we will go ahead and create our problem. First, lets load all the data we need in terms of features: 
+
+
+```{r}
+# We first load this Excel file to extract feature names later
+feat_ids <- read_xlsx("Marxan_Data/conservation_feats_ids.xlsx")
+
+# now lets load all the rasters we need
+iba <- raster("Marxan_Data/iba_bc.tif")
+kelp <- raster("Marxan_Data/kelp_bc.tif")
+killerw <- raster("Marxan_Data/killerwhale.tif")
+seal <- raster("Marxan_Data/sealions.tif")
+seao <- raster("Marxan_Data/seaotter.tif")
+
+benthic <- raster("Marxan_Data/benthic14cl.tif")
+
+# benthic and the rest of the rasters are not exactly in the same format (same number of rows and columns)
+# so we need to go ahead and make sure benthic has the same format as the other rasters.
+benthic <- resample(benthic, iba, method="ngb")
+```
+
+Now that we have loaded all the feature data into R, we need to go ahead and create the benthic classes, you have used to setup the Marxan problem before. This is specific to the way the benthic raster is setup and will differ from case to case in real world examples you might explore in the future. 
+
+In this specfic case, we know that benthic has a total of 14 classes, so the R code below does split the benthic raster up into 14 rasters, based on cell values, and at the end puts them together in a stack.
+
+```{r}
+benthic_values <- values(benthic)
+ben_list <- list()
+for(ii in 1:14){
+  tmp_r <- benthic
+  tmp_r_val <- benthic_values
+  tmp_r_val <- ifelse(tmp_r_val == ii, 1, NA)
+  values(tmp_r) <- tmp_r_val
+  
+  ben_list[[ii]] <- tmp_r
+    
+  rm(tmp_r, tmp_r_val)
+  
+}
+ben_stack <- stack(ben_list)
+```
+
+Now that all rasters have been created, we can combine them in a stack and give them the names from the Excel file we read in earlier.
+
+```{r}
+features <- stack(ben_stack, iba, kelp, killerw, seal, seao)
+names(features) <- feat_ids$New_Name
+```
+
+Next, we load in the fishcost layer and also resample it to fit the rest of the raster layers.
+
+```{r}
+fishcost <- raster("Marxan_Data/fishcost.tif")
+fishcost <- resample(fishcost, iba, method="ngb")
+```
+
+Now its time to setup the _prioritizr_ problem. As a first step, we are reading in the pulayer from the _Marxan_database_. I'm doing this to show you a nice way to setup the _prioritizr_ problem, using a shapefile directly in the `problem` function call. We need to extract the fishcost data to that pulayer, before we can use this information in the `problem` formulation.
+
+
+```{r}
+pulayer <- readOGR("Marxan_database/pulayer/pulayer_BC_marine.shp", stringsAsFactors = FALSE)
+
+pulayer$cost <- as.vector(fast_extract(fishcost, pulayer))
+```
+
+Now for the actual `problem` formulation. You will see that we use the pulayer as one of the inputs to the `problem` function. As pulayer is a shapefile, we need to tell _prioritzr_ which attribute to use as the cost column. We also include the features raster stack directly in the `problem` function. 
+We also set the objective function (minumum set),
+the relative targets (0.3 or 30% of each feature), 
+and the decision type (binary for integer linear programming).
+
+When that's done we can solve the problem.
+
+```{r}
+p3 <- problem(pulayer, cost_column = "cost", features = features, run_checks = FALSE) %>%
+  add_min_set_objective() %>%
+  add_relative_targets(0.3) %>%
+  add_binary_decisions() 
+
+s3 <- solve(p3)
+```
+
+As we have done before, we will now go ahead and extract summary statistics as well as plot the results.
+We just worked through an entire _prioritzr_ problem, from reading and processing raw data to setting up and solving a `problem`, to extracting statistics and spatial visualization of results.
+
+```{r}
+
+# count number of planning units in solution
+sum(s3$solution_1, na.rm = TRUE)
+
+
+# proportion of planning units in solution
+mean(s3$solution_1, na.rm = TRUE)
+
+
+s3$solution_1 <- factor(s3$solution_1)
+spplot(s3, "solution_1", col.regions = c("grey90", "darkgreen"),
+       main = "problem solution")
+
+```
+

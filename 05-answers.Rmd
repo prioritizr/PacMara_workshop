@@ -1,0 +1,122 @@
+# Answers
+
+This chapter contains the answers to the questions presented in the earlier chapters. The answers are provided here so you can check if your answers are correct.
+
+## Redo Marxan analysis
+
+### Base analysis on input.dat
+
+```{block2, type="rmdanswer"}
+1. Subjective.
+2. I would say, the most obvious differences are in the bottom left corner, where the Marxan results are rather diffuse and selection frequencies are low. This is actually a very good example of some 'issues' people have described with prioritizr. Its essentially related to a problem not having enough feature and cost heterogeneity for a decision support tool such as Marxan or prioritzr to find reasonable solutions.
+3. Heterogenous cost structures help. So do features that are more complex or have more overlap with each other.
+
+```
+
+
+## Data
+
+### Planning unit data
+
+```{block2, type="rmdanswer"}
+1. `nrow(pu_data)`
+2. `max(pu_data$cost)`
+3. `sum(pu_data$locked_in)`
+4. `mean(pu_data$locked_in)`
+5. `sum(pu_data$locked_out)`
+6. `mean(pu_data$locked_out)`
+7. `assert_that(min(c(pu_data$locked_in, pu_data$locked_out)) == 0)`
+      `assert_that(max(c(pu_data$locked_in, pu_data$locked_out)) == 1)`
+8. `all(is.finite(pu_data$cost))`
+9. `assert_that(sum(duplicated(pu_data$id)) == 0)`
+10. Yes, the eastern side of Tasmania is generally much cheaper than the western side.
+11. Yes, most planning units covered by protected areas are located in the south-western side of Tasmania.
+
+```
+
+\clearpage
+
+### Vegetation data
+
+```{block2, type="rmdanswer"}
+1. Central-north Tasmania
+2. `cellStats(veg_data[[12]], "mean")`
+3. `names(veg_data)[which.max(cellStats(veg_data, "sum"))]`
+4. Yes, they are the same.
+
+```
+
+
+## Spatial prioritizations
+
+### Starting out simple
+
+```{block2, type="rmdanswer"}
+1. `sum(s1$solution_1)` \newline
+   `mean(s1$solution_1)`
+2. Yes, the planning units are generally spread out across most of the study area and they are not biased towards specific areas.
+3. `all(feature_representation(p1, s1[, "solution_1"])$relative_held >= 0.2)`
+
+```
+
+### Adding complexity
+
+```{block2, type="rmdanswer"}
+1. `sum(s2$cost * s2$solution_1)` \newline
+   `sum(s3$cost * s3$solution_1)` \newline
+   `sum(s4$cost * s4$solution_1)`
+2. `sum(s2$solution_1)` \newline
+   `sum(s3$solution_1)` \newline
+   `sum(s4$solution_1)`
+3. No, just because a solution a solution has more planning units does not mean that it will cost less.
+4. This is because the planning units covered by existing protected areas have a non-zero cost and locking in these planning units introduces inefficiencies into the solution. This is very common in real-world conservation prioritizations because existing protected areas are often in places that do little to benefit biodiversity [@r3].
+5. This is because some of the planning units that are highly degraded---based on just the planning unit costs and vegetation data---provide cost-efficient opportunities for meeting the targets and excluding them from the reserve selection process means that other more costly planning units are needed to meet the targets.
+6. `sum(s4$cost * s4$solution_1) - sum(s4$cost * s4$locked_in)`
+7. We get an error message stating the the problem is infeasible because there is no valid solution---even if we selected all the planning units the study area we would still not meet the targets.
+
+```
+
+### Penalizing fragmentation
+
+```{block2, type="rmdanswer"}
+1. The cost of the fourth solution is `sum(s4$solution_1 * s4$cost)` and the cost of the fifth solution is `sum(s5$solution_1 * s5$cost)`. The fifth solution (`s5`) costs more than the fourth solution (`s4`) because we have added penalties to the conservation planning problem to indicate that we are willing to accept a slightly more costly solution if it means that we can reduce fragmentation.
+2. The solution is now nearly identical to the fourth solution (`s4`) and so has nearly the same cost. This penalty value is too low and is not useful because it does not reduce the fragmentation in our solution.
+3. The solution now contains a lot of extra planning units that are not needed to meet our targets. In fact, nearly every planning unit in the study is now selected. This penalty value is too high and is not useful.
+
+```
+
+### Budget limited prioritizations
+
+```{block2, type="rmdanswer"}
+1. `names(veg_data)[which.min(wts)]`
+2. `sum(s6$cost * s6$solution_1)` \newline
+   `sum(s7$cost * s7$solution_1)`
+3. No, the sixth (`s6`) and seventh (`s7`) solutions both share many of the same selected planning units and there does not appear to be an obvious difference in the spatial location of the planning units which they do not share.
+4. Yes. Both solutions contain adequately represent these features: \newline
+    `r6$feature[r6$relative_held > 0.2 & r7$relative_held > 0.2]` \newline
+    The sixth (`s6`) is adequately represents these features too: \newline
+    `r6$feature[r6$relative_held > 0.2 & !r7$relative_held > 0.2]` \newline
+    The seventh (`s7`) is adequately represents these features too: \newline
+    `r7$feature[r7$relative_held > 0.2 & !r6$relative_held > 0.2]`
+
+```
+
+\clearpage
+
+### Solution portfolios
+
+```{block2, type="rmdanswer"}
+1. No the cost are very similar. \newline
+   `sum(s8$solution_1 * s8$cost)` \newline
+   `sum(s8$solution_2 * s8$cost)` \newline
+   `sum(s8$solution_3 * s8$cost)` \newline
+   `sum(s8$solution_4 * s8$cost)` \newline
+   `sum(s8$solution_5 * s8$cost)` \newline
+   `sum(s8$solution_6 * s8$cost)`
+2. No the status of the planning units are very similar in the all of the solutions in the portfolio. \newline
+    `mean((s8$solution_1 == s8$solution_2) & (s8$solution_1 == s8$solution_3) &
+    (s8$solution_1 == s8$solution_4) & (s8$solution_1 == s8$solution_5) &
+    (s8$solution_1 == s8$solution_6))`
+3. We should increase the number of the solutions in the portfolio.
+
+```

@@ -1,0 +1,27 @@
+Package: placeholder
+Type: Book
+Title: Prioritizr Workshop Manual
+Version: 0.0.1
+biocViews:
+Imports:
+  bookdown,
+  tidyverse,
+  raster,
+  dplyr,
+  plyr,
+  sp,
+  rgeos,
+  rgdal,
+  Rsymphony,
+  prioritizr,
+  prioritizrdata,
+  mapview,
+  units,
+  velox,
+  lpsymphony,
+  gridExtra,
+  readxl,
+  data.table
+Remotes:
+  rstudio/bookdown,
+  prioritizr/prioritizr
