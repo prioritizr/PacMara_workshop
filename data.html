@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Data | PRIORITIZR WORKSHOP MANUAL</title>
+  <meta name="description" content="Manual for the prioritizr module of the Introduction to Marxan &amp; MarZone &amp; Prioritizr - Training Course held at University of Victoria, Victoria, Canada." />
+  <meta name="generator" content="bookdown 0.14.1 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Data | PRIORITIZR WORKSHOP MANUAL" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://prioritizr.github.io/PacMara_workshop" />
+  <meta property="og:image" content="https://prioritizr.github.io/PacMara_workshopimages/cover.png" />
+  <meta property="og:description" content="Manual for the prioritizr module of the Introduction to Marxan &amp; MarZone &amp; Prioritizr - Training Course held at University of Victoria, Victoria, Canada." />
+  <meta name="github-repo" content="prioritizr/PacMara_workshop" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Data | PRIORITIZR WORKSHOP MANUAL" />
+  
+  <meta name="twitter:description" content="Manual for the prioritizr module of the Introduction to Marxan &amp; MarZone &amp; Prioritizr - Training Course held at University of Victoria, Victoria, Canada." />
+  <meta name="twitter:image" content="https://prioritizr.github.io/PacMara_workshopimages/cover.png" />
+
+<meta name="author" content="Jeffrey O. Hanson (with modifications by Richard Schuster)" />
+
+
+<meta name="date" content="2019-11-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="prev" href="marxan-analysis.html"/>
+<link rel="next" href="spatial-prioritizations.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome!</a></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#overview"><i class="fa fa-check"></i><b>2.1</b> Overview</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#setup"><i class="fa fa-check"></i><b>2.2</b> Setting up your computer</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="introduction.html"><a href="introduction.html#r"><i class="fa fa-check"></i><b>2.2.1</b> R</a></li>
+<li class="chapter" data-level="2.2.2" data-path="introduction.html"><a href="introduction.html#rstudio"><i class="fa fa-check"></i><b>2.2.2</b> RStudio</a></li>
+<li class="chapter" data-level="2.2.3" data-path="introduction.html"><a href="introduction.html#r-packages"><i class="fa fa-check"></i><b>2.2.3</b> R packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#further-reading"><i class="fa fa-check"></i><b>2.3</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="marxan-analysis.html"><a href="marxan-analysis.html"><i class="fa fa-check"></i><b>3</b> Redo Marxan analysis</a><ul>
+<li class="chapter" data-level="3.1" data-path="marxan-analysis.html"><a href="marxan-analysis.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="marxan-analysis.html"><a href="marxan-analysis.html#starting-out"><i class="fa fa-check"></i><b>3.2</b> Starting out</a></li>
+<li class="chapter" data-level="3.3" data-path="marxan-analysis.html"><a href="marxan-analysis.html#attaching-packages"><i class="fa fa-check"></i><b>3.3</b> Attaching packages</a></li>
+<li class="chapter" data-level="3.4" data-path="marxan-analysis.html"><a href="marxan-analysis.html#base-analysis-on-input.dat"><i class="fa fa-check"></i><b>3.4</b> Base analysis on input.dat</a></li>
+<li class="chapter" data-level="3.5" data-path="marxan-analysis.html"><a href="marxan-analysis.html#base-analysis-using-individual-.dat-files"><i class="fa fa-check"></i><b>3.5</b> Base analysis using individual .dat files</a></li>
+<li class="chapter" data-level="3.6" data-path="marxan-analysis.html"><a href="marxan-analysis.html#recreate-the-marxan-analysis-starting-from-the-raw-data"><i class="fa fa-check"></i><b>3.6</b> Recreate the Marxan analysis starting from the raw data</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>4</b> Data</a><ul>
+<li class="chapter" data-level="4.1" data-path="data.html"><a href="data.html#data-import"><i class="fa fa-check"></i><b>4.1</b> Data import</a></li>
+<li class="chapter" data-level="4.2" data-path="data.html"><a href="data.html#planning-unit-data"><i class="fa fa-check"></i><b>4.2</b> Planning unit data</a></li>
+<li class="chapter" data-level="4.3" data-path="data.html"><a href="data.html#vegetation-data"><i class="fa fa-check"></i><b>4.3</b> Vegetation data</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="spatial-prioritizations.html"><a href="spatial-prioritizations.html"><i class="fa fa-check"></i><b>5</b> Spatial prioritizations</a><ul>
+<li class="chapter" data-level="5.1" data-path="spatial-prioritizations.html"><a href="spatial-prioritizations.html#introduction-2"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="spatial-prioritizations.html"><a href="spatial-prioritizations.html#starting-out-simple"><i class="fa fa-check"></i><b>5.2</b> Starting out simple</a></li>
+<li class="chapter" data-level="5.3" data-path="spatial-prioritizations.html"><a href="spatial-prioritizations.html#adding-complexity"><i class="fa fa-check"></i><b>5.3</b> Adding complexity</a></li>
+<li class="chapter" data-level="5.4" data-path="spatial-prioritizations.html"><a href="spatial-prioritizations.html#penalizing-fragmentation"><i class="fa fa-check"></i><b>5.4</b> Penalizing fragmentation</a></li>
+<li class="chapter" data-level="5.5" data-path="spatial-prioritizations.html"><a href="spatial-prioritizations.html#budget-limited-prioritizations"><i class="fa fa-check"></i><b>5.5</b> Budget limited prioritizations</a></li>
+<li class="chapter" data-level="5.6" data-path="spatial-prioritizations.html"><a href="spatial-prioritizations.html#solution-portfolios"><i class="fa fa-check"></i><b>5.6</b> Solution portfolios</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="answers.html"><a href="answers.html"><i class="fa fa-check"></i><b>6</b> Answers</a><ul>
+<li class="chapter" data-level="6.1" data-path="answers.html"><a href="answers.html#redo-marxan-analysis"><i class="fa fa-check"></i><b>6.1</b> Redo Marxan analysis</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="answers.html"><a href="answers.html#base-analysis-on-input.dat-1"><i class="fa fa-check"></i><b>6.1.1</b> Base analysis on input.dat</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="data.html"><a href="data.html#data"><i class="fa fa-check"></i><b>6.2</b> Data</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="answers.html"><a href="answers.html#planning-unit-data-1"><i class="fa fa-check"></i><b>6.2.1</b> Planning unit data</a></li>
+<li class="chapter" data-level="6.2.2" data-path="answers.html"><a href="answers.html#vegetation-data-1"><i class="fa fa-check"></i><b>6.2.2</b> Vegetation data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="spatial-prioritizations.html"><a href="spatial-prioritizations.html#spatial-prioritizations"><i class="fa fa-check"></i><b>6.3</b> Spatial prioritizations</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="answers.html"><a href="answers.html#starting-out-simple-1"><i class="fa fa-check"></i><b>6.3.1</b> Starting out simple</a></li>
+<li class="chapter" data-level="6.3.2" data-path="answers.html"><a href="answers.html#adding-complexity-1"><i class="fa fa-check"></i><b>6.3.2</b> Adding complexity</a></li>
+<li class="chapter" data-level="6.3.3" data-path="answers.html"><a href="answers.html#penalizing-fragmentation-1"><i class="fa fa-check"></i><b>6.3.3</b> Penalizing fragmentation</a></li>
+<li class="chapter" data-level="6.3.4" data-path="answers.html"><a href="answers.html#budget-limited-prioritizations-1"><i class="fa fa-check"></i><b>6.3.4</b> Budget limited prioritizations</a></li>
+<li class="chapter" data-level="6.3.5" data-path="answers.html"><a href="answers.html#solution-portfolios-1"><i class="fa fa-check"></i><b>6.3.5</b> Solution portfolios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i><b>7</b> Acknowledgements</a></li>
+<li class="chapter" data-level="8" data-path="session-information.html"><a href="session-information.html"><i class="fa fa-check"></i><b>8</b> Session information</a></li>
+<li class="chapter" data-level="9" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>9</b> References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PRIORITIZR WORKSHOP MANUAL</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Data</h1>
+<p>You should have already downloaded the data for the prioritizr module of this workshop. If you have not already done so, you can download it from here: <a href="https://github.com/prioritizr/PacMara_workshop/raw/master/data.zip" class="uri">https://github.com/prioritizr/PacMara_workshop/raw/master/data.zip</a>. After downloading the data, you can unzip the data into a new folder. Next, you will need to set the working directory to this new folder. To achieve this, click on the <em>Session</em> button on the RStudio menu bar, then click <em>Set Working Directory</em>, and then <em>Choose Directory</em>.</p>
+<p><img src="images/rstudio-wd.png" width="70%" style="display: block; margin: auto;" /></p>
+
+<p>Now navigate to the folder where you unzipped the data and select <em>Open</em>. You can verify that you have correctly set the working directory using the following R code. You should see the output <code>TRUE</code> in the <em>Console</em> panel.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">file.exists</span>(<span class="st">&quot;data/pu.shp&quot;</span>)</code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div id="data-import" class="section level2">
+<h2><span class="header-section-number">4.1</span> Data import</h2>
+<p>Now that we have downloaded the dataset, we will need to import it into our R session. Specifically, this data was obtained from the “Introduction to Marxan” course and was originally a subset of a larger spatial prioritization project performed under contract to Australia’s Department of Environment and Water Resources. It contains vector-based planning unit data (<code>pu.shp</code>) and the raster-based data describing the spatial distributions of 62 vegetation classes (<code>vegetation.tif</code>) in Tasmania, Australia. Please note this dataset is only provided for teaching purposes and should not be used for any real-world conservation planning. We can import the data into our R session using the following code.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># import planning unit data</span>
+pu_data &lt;-<span class="st"> </span><span class="kw">readOGR</span>(<span class="st">&quot;data/pu.shp&quot;</span>)</code></pre></div>
+<pre><code>## OGR data source with driver: ESRI Shapefile 
+## Source: &quot;/home/travis/build/prioritizr/PacMara_workshop/data/pu.shp&quot;, layer: &quot;pu&quot;
+## with 1130 features
+## It has 5 fields</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># format columns in planning unit data</span>
+pu_data<span class="op">$</span>locked_in &lt;-<span class="st"> </span><span class="kw">as.logical</span>(pu_data<span class="op">$</span>locked_in)
+pu_data<span class="op">$</span>locked_out &lt;-<span class="st"> </span><span class="kw">as.logical</span>(pu_data<span class="op">$</span>locked_out)
+
+<span class="co"># import vegetation data</span>
+veg_data &lt;-<span class="st"> </span><span class="kw">stack</span>(<span class="st">&quot;data/vegetation.tif&quot;</span>)</code></pre></div>
+
+</div>
+<div id="planning-unit-data" class="section level2">
+<h2><span class="header-section-number">4.2</span> Planning unit data</h2>
+<p>The planning unit data contains spatial data describing the geometry for each planning unit and attribute data with information about each planning unit (e.g. cost values). Let’s investigate the <code>pu_data</code> object. The attribute data contains 5 columns with contain the following information:</p>
+<ul>
+<li><code>id</code>: unique identifiers for each planning unit</li>
+<li><code>cost</code>: acquisition cost values for each planning unit (millions of Australian dollars).</li>
+<li><code>status</code>: status information for each planning unit (only relevant with Marxan)</li>
+<li><code>locked_in</code>: logical values (i.e. <code>TRUE</code>/<code>FALSE</code>) indicating if planning units are covered by protected areas or not.</li>
+<li><code>locked_out</code>: logical values (i.e. <code>TRUE</code>/<code>FALSE</code>) indicating if planning units cannot be managed as a protected area because they contain are too degraded.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print a short summary of the data</span>
+<span class="kw">print</span>(pu_data)</code></pre></div>
+<pre><code>## class       : SpatialPolygonsDataFrame 
+## features    : 1130 
+## extent      : 1080623, 1399989, -4840595, -4497092  (xmin, xmax, ymin, ymax)
+## crs         : +proj=aea +lat_1=-18 +lat_2=-36 +lat_0=0 +lon_0=132 +x_0=0 +y_0=0 +ellps=GRS80 +units=m +no_defs 
+## variables   : 5
+## names       :   id,              cost, status, locked_in, locked_out 
+## min values  :    1, 0.192488262910798,      0,         0,          0 
+## max values  : 1130,  61.9272727272727,      2,         1,          1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># plot the planning unit data</span>
+<span class="kw">plot</span>(pu_data)</code></pre></div>
+<p><img src="prioritizr-workshop-manual_files/figure-html/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># plot an interactive map of the planning unit data</span>
+<span class="kw">mapview</span>(pu_data)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the structure of object</span>
+<span class="kw">str</span>(pu_data, <span class="dt">max.level =</span> <span class="dv">2</span>)</code></pre></div>
+<pre><code>## Formal class &#39;SpatialPolygonsDataFrame&#39; [package &quot;sp&quot;] with 5 slots
+##   ..@ data       :&#39;data.frame&#39;:  1130 obs. of  5 variables:
+##   ..@ polygons   :List of 1130
+##   ..@ plotOrder  : int [1:1130] 217 973 506 645 705 975 253 271 704 889 ...
+##   ..@ bbox       : num [1:2, 1:2] 1080623 -4840595 1399989 -4497092
+##   .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   ..@ proj4string:Formal class &#39;CRS&#39; [package &quot;sp&quot;] with 1 slot</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the class of the object</span>
+<span class="kw">class</span>(pu_data)</code></pre></div>
+<pre><code>## [1] &quot;SpatialPolygonsDataFrame&quot;
+## attr(,&quot;package&quot;)
+## [1] &quot;sp&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the slots of the object</span>
+<span class="kw">slotNames</span>(pu_data)</code></pre></div>
+<pre><code>## [1] &quot;data&quot;        &quot;polygons&quot;    &quot;plotOrder&quot;   &quot;bbox&quot;        &quot;proj4string&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the geometry for the 80th planning unit</span>
+pu_data<span class="op">@</span>polygons[[<span class="dv">80</span>]]</code></pre></div>
+<pre><code>## An object of class &quot;Polygons&quot;
+## Slot &quot;Polygons&quot;:
+## [[1]]
+## An object of class &quot;Polygon&quot;
+## Slot &quot;labpt&quot;:
+## [1]  1289177 -4558185
+## 
+## Slot &quot;area&quot;:
+## [1] 1060361
+## 
+## Slot &quot;hole&quot;:
+## [1] FALSE
+## 
+## Slot &quot;ringDir&quot;:
+## [1] 1
+## 
+## Slot &quot;coords&quot;:
+##          [,1]     [,2]
+##  [1,] 1288123 -4558431
+##  [2,] 1287877 -4558005
+##  [3,] 1288177 -4558019
+##  [4,] 1288278 -4558054
+##  [5,] 1288834 -4558038
+##  [6,] 1289026 -4557929
+##  [7,] 1289168 -4557928
+##  [8,] 1289350 -4557790
+##  [9,] 1289517 -4557744
+## [10,] 1289618 -4557773
+## [11,] 1289836 -4557965
+## [12,] 1290000 -4557984
+## [13,] 1290025 -4557987
+## [14,] 1290144 -4558168
+## [15,] 1290460 -4558431
+## [16,] 1288123 -4558431
+## 
+## 
+## 
+## Slot &quot;plotOrder&quot;:
+## [1] 1
+## 
+## Slot &quot;labpt&quot;:
+## [1]  1289177 -4558185
+## 
+## Slot &quot;ID&quot;:
+## [1] &quot;79&quot;
+## 
+## Slot &quot;area&quot;:
+## [1] 1060361</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the coordinate reference system</span>
+<span class="kw">print</span>(pu_data<span class="op">@</span>proj4string)</code></pre></div>
+<pre><code>## CRS arguments:
+##  +proj=aea +lat_1=-18 +lat_2=-36 +lat_0=0 +lon_0=132 +x_0=0 +y_0=0
+## +ellps=GRS80 +units=m +no_defs</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print number of planning units (geometries) in the data</span>
+<span class="kw">nrow</span>(pu_data)</code></pre></div>
+<pre><code>## [1] 1130</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the first six rows in the attribute data</span>
+<span class="kw">head</span>(pu_data<span class="op">@</span>data)</code></pre></div>
+<pre><code>##   id     cost status locked_in locked_out
+## 0  1 60.24638      0     FALSE       TRUE
+## 1  2 19.86301      0     FALSE      FALSE
+## 2  3 59.68051      0     FALSE       TRUE
+## 3  4 32.41614      0     FALSE      FALSE
+## 4  5 26.17706      0     FALSE      FALSE
+## 5  6 51.26218      0     FALSE       TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the first six values in the cost column of the attribute data</span>
+<span class="kw">head</span>(pu_data<span class="op">$</span>cost)</code></pre></div>
+<pre><code>## [1] 60.24638 19.86301 59.68051 32.41614 26.17706 51.26218</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the highest cost value</span>
+<span class="kw">max</span>(pu_data<span class="op">$</span>cost)</code></pre></div>
+<pre><code>## [1] 61.92727</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the smallest cost value</span>
+<span class="kw">min</span>(pu_data<span class="op">$</span>cost)</code></pre></div>
+<pre><code>## [1] 0.1924883</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print average cost value</span>
+<span class="kw">mean</span>(pu_data<span class="op">$</span>cost)</code></pre></div>
+<pre><code>## [1] 25.13536</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># plot a map of the planning unit cost data</span>
+<span class="kw">spplot</span>(pu_data, <span class="st">&quot;cost&quot;</span>)</code></pre></div>
+<p><img src="prioritizr-workshop-manual_files/figure-html/unnamed-chunk-30-1.png" width="60%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># plot an interactive map of the planning unit cost data</span>
+<span class="kw">mapview</span>(pu_data, <span class="dt">zcol =</span> <span class="st">&quot;cost&quot;</span>)</code></pre></div>
+<p>Now, you can try and answer some questions about the planning unit data.</p>
+
+<div class="rmdquestion">
+<ol style="list-style-type: decimal">
+<li>How many planning units are in the planning unit data?</li>
+<li>What is the highest cost value?</li>
+<li>How many planning units are covered by the protected areas (hint: <code>sum(x)</code>)?</li>
+<li>What is the proportion of the planning units that are covered by the protected areas (hint: <code>mean(x)</code>)?</li>
+<li>How many planning units are highly degraded (hint: <code>sum(x)</code>)?</li>
+<li>What is the proportion of planning units are highly degraded (hint: <code>mean(x)</code>)?</li>
+<li>Can you verify that all values in the <code>locked_in</code> and <code>locked_out</code> columns are zero or one (hint: <code>min(x)</code> and <code>max(x)</code>)?.</li>
+<li>Can you verify that none of the planning units are missing cost values (hint: <code>all(is.finite(x))</code>)?.</li>
+<li>Can you very that none of the planning units have duplicated identifiers? (hint: <code>sum(duplicated(x))</code>)?</li>
+<li>Is there a spatial pattern in the planning unit cost values (hint: use <code>spplot</code> to make a map).</li>
+<li>Is there a spatial pattern in where most planning units are covered by protected areas (hint: use <code>spplot</code> to make a map).</li>
+</ol>
+</div>
+
+
+</div>
+<div id="vegetation-data" class="section level2">
+<h2><span class="header-section-number">4.3</span> Vegetation data</h2>
+<p>The vegetation data describes the spatial distribution of 62 vegetation classes in the study area. This data is in a raster format and so the data are organized using a square grid comprising square grid cells that are each the same size. In our case, the raster data contains multiple layers (also called “bands”) and each layer has corresponds to a spatial grid with exactly the same area and has exactly the same dimensionality (i.e. number of rows, columns, and cells). In this dataset, there are 62 different regular spatial grids layered on top of each other – with each layer corresponding to a different vegetation class – and each of these layers contains a grid with 343 rows, 320 columns, and 109760 cells. Within each layer, each cell corresponds to a 1 by 1 km square. The values associated with each grid cell indicate the (one) presence or (zero) absence of a given vegetation class in the cell.</p>
+<div class="figure">
+<img src="images/rasterbands.png" />
+
+</div>
+<p>Let’s explore the vegetation data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print a short summary of the data</span>
+<span class="kw">print</span>(veg_data)</code></pre></div>
+<pre><code>## class      : RasterStack 
+## dimensions : 343, 320, 109760, 62  (nrow, ncol, ncell, nlayers)
+## resolution : 1000, 1000  (x, y)
+## extent     : 1080496, 1400496, -4841217, -4498217  (xmin, xmax, ymin, ymax)
+## crs        : +proj=aea +lat_1=-18 +lat_2=-36 +lat_0=0 +lon_0=132 +x_0=0 +y_0=0 +ellps=GRS80 +units=m +no_defs 
+## names      : vegetation.1, vegetation.2, vegetation.3, vegetation.4, vegetation.5, vegetation.6, vegetation.7, vegetation.8, vegetation.9, vegetation.10, vegetation.11, vegetation.12, vegetation.13, vegetation.14, vegetation.15, ... 
+## min values :            0,            0,            0,            0,            0,            0,            0,            0,            0,             0,             0,             0,             0,             0,             0, ... 
+## max values :            1,            1,            1,            1,            1,            1,            1,            1,            1,             1,             1,             1,             1,             1,             1, ...</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># plot a map of the 36th vegetation class</span>
+<span class="kw">plot</span>(veg_data[[<span class="dv">36</span>]])</code></pre></div>
+<p><img src="prioritizr-workshop-manual_files/figure-html/unnamed-chunk-33-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># plot an interactive map of the 36th vegetation class</span>
+<span class="kw">mapview</span>(veg_data[[<span class="dv">36</span>]])</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print number of rows in the data</span>
+<span class="kw">nrow</span>(veg_data)</code></pre></div>
+<pre><code>## [1] 343</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print number of columns  in the data</span>
+<span class="kw">ncol</span>(veg_data)</code></pre></div>
+<pre><code>## [1] 320</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print number of cells in the data</span>
+<span class="kw">ncell</span>(veg_data)</code></pre></div>
+<pre><code>## [1] 109760</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print number of layers in the data</span>
+<span class="kw">nlayers</span>(veg_data)</code></pre></div>
+<pre><code>## [1] 62</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print  resolution on the x-axis</span>
+<span class="kw">xres</span>(veg_data)</code></pre></div>
+<pre><code>## [1] 1000</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print resolution on the y-axis</span>
+<span class="kw">yres</span>(veg_data)</code></pre></div>
+<pre><code>## [1] 1000</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print spatial extent of the grid, i.e. coordinates for corners</span>
+<span class="kw">extent</span>(veg_data)</code></pre></div>
+<pre><code>## class      : Extent 
+## xmin       : 1080496 
+## xmax       : 1400496 
+## ymin       : -4841217 
+## ymax       : -4498217</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the coordinate reference system</span>
+<span class="kw">print</span>(veg_data<span class="op">@</span>crs)</code></pre></div>
+<pre><code>## CRS arguments:
+##  +proj=aea +lat_1=-18 +lat_2=-36 +lat_0=0 +lon_0=132 +x_0=0 +y_0=0
+## +ellps=GRS80 +units=m +no_defs</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print a summary of the first layer in the stack</span>
+<span class="kw">print</span>(veg_data[[<span class="dv">1</span>]])</code></pre></div>
+<pre><code>## class      : RasterLayer 
+## band       : 1  (of  62  bands)
+## dimensions : 343, 320, 109760  (nrow, ncol, ncell)
+## resolution : 1000, 1000  (x, y)
+## extent     : 1080496, 1400496, -4841217, -4498217  (xmin, xmax, ymin, ymax)
+## crs        : +proj=aea +lat_1=-18 +lat_2=-36 +lat_0=0 +lon_0=132 +x_0=0 +y_0=0 +ellps=GRS80 +units=m +no_defs 
+## source     : /home/travis/build/prioritizr/PacMara_workshop/data/vegetation.tif 
+## names      : vegetation.1 
+## values     : 0, 1  (min, max)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the value in the 800th cell in the first layer of the stack</span>
+<span class="kw">print</span>(veg_data[[<span class="dv">1</span>]][<span class="dv">800</span>])</code></pre></div>
+<pre><code>##   
+## 0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># print the value of the cell located in the 30th row and the 60th column of</span>
+<span class="co"># the first layer</span>
+<span class="kw">print</span>(veg_data[[<span class="dv">1</span>]][<span class="dv">30</span>, <span class="dv">60</span>])</code></pre></div>
+<pre><code>##   
+## 0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># calculate the sum of all the cell values in the first layer</span>
+<span class="kw">cellStats</span>(veg_data[[<span class="dv">1</span>]], <span class="st">&quot;sum&quot;</span>)</code></pre></div>
+<pre><code>## [1] 36</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># calculate the maximum value of all the cell values in the first layer</span>
+<span class="kw">cellStats</span>(veg_data[[<span class="dv">1</span>]], <span class="st">&quot;max&quot;</span>)</code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># calculate the minimum value of all the cell values in the first layer</span>
+<span class="kw">cellStats</span>(veg_data[[<span class="dv">1</span>]], <span class="st">&quot;min&quot;</span>)</code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># calculate the mean value of all the cell values in the first layer</span>
+<span class="kw">cellStats</span>(veg_data[[<span class="dv">1</span>]], <span class="st">&quot;mean&quot;</span>)</code></pre></div>
+<pre><code>## [1] 0.0003279883</code></pre>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># calculate the maximum value in each layer</span>
+<span class="kw">as_tibble</span>(<span class="kw">data.frame</span>(<span class="dt">max =</span> <span class="kw">cellStats</span>(veg_data, <span class="st">&quot;max&quot;</span>)))</code></pre></div>
+<pre><code>## # A tibble: 62 x 1
+##      max
+##    &lt;dbl&gt;
+##  1     1
+##  2     1
+##  3     1
+##  4     1
+##  5     1
+##  6     1
+##  7     1
+##  8     1
+##  9     1
+## 10     1
+## # … with 52 more rows</code></pre>
+<p>Now, you can try and answer some questions about the vegetation data.</p>
+
+<div class="rmdquestion">
+<ol style="list-style-type: decimal">
+<li>What part of the study area is the 51st vegetation class found in (hint: make a map)?</li>
+<li>What proportion of cells contain the 12th vegetation class?</li>
+<li>Which vegetation class is present in the greatest number of cells?</li>
+<li>The planning unit data and the vegetation data should have the same coordinate reference system. Can you check if they are the same?</li>
+</ol>
+</div>
+
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="marxan-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="spatial-prioritizations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

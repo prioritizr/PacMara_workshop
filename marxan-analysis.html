@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Redo Marxan analysis | PRIORITIZR WORKSHOP MANUAL</title>
+  <meta name="description" content="Manual for the prioritizr module of the Introduction to Marxan &amp; MarZone &amp; Prioritizr - Training Course held at University of Victoria, Victoria, Canada." />
+  <meta name="generator" content="bookdown 0.14.1 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Redo Marxan analysis | PRIORITIZR WORKSHOP MANUAL" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://prioritizr.github.io/PacMara_workshop" />
+  <meta property="og:image" content="https://prioritizr.github.io/PacMara_workshopimages/cover.png" />
+  <meta property="og:description" content="Manual for the prioritizr module of the Introduction to Marxan &amp; MarZone &amp; Prioritizr - Training Course held at University of Victoria, Victoria, Canada." />
+  <meta name="github-repo" content="prioritizr/PacMara_workshop" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Redo Marxan analysis | PRIORITIZR WORKSHOP MANUAL" />
+  
+  <meta name="twitter:description" content="Manual for the prioritizr module of the Introduction to Marxan &amp; MarZone &amp; Prioritizr - Training Course held at University of Victoria, Victoria, Canada." />
+  <meta name="twitter:image" content="https://prioritizr.github.io/PacMara_workshopimages/cover.png" />
+
+<meta name="author" content="Jeffrey O. Hanson (with modifications by Richard Schuster)" />
+
+
+<meta name="date" content="2019-11-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="prev" href="introduction.html"/>
+<link rel="next" href="data.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome!</a></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#overview"><i class="fa fa-check"></i><b>2.1</b> Overview</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#setup"><i class="fa fa-check"></i><b>2.2</b> Setting up your computer</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="introduction.html"><a href="introduction.html#r"><i class="fa fa-check"></i><b>2.2.1</b> R</a></li>
+<li class="chapter" data-level="2.2.2" data-path="introduction.html"><a href="introduction.html#rstudio"><i class="fa fa-check"></i><b>2.2.2</b> RStudio</a></li>
+<li class="chapter" data-level="2.2.3" data-path="introduction.html"><a href="introduction.html#r-packages"><i class="fa fa-check"></i><b>2.2.3</b> R packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#further-reading"><i class="fa fa-check"></i><b>2.3</b> Further reading</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="marxan-analysis.html"><a href="marxan-analysis.html"><i class="fa fa-check"></i><b>3</b> Redo Marxan analysis</a><ul>
+<li class="chapter" data-level="3.1" data-path="marxan-analysis.html"><a href="marxan-analysis.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="marxan-analysis.html"><a href="marxan-analysis.html#starting-out"><i class="fa fa-check"></i><b>3.2</b> Starting out</a></li>
+<li class="chapter" data-level="3.3" data-path="marxan-analysis.html"><a href="marxan-analysis.html#attaching-packages"><i class="fa fa-check"></i><b>3.3</b> Attaching packages</a></li>
+<li class="chapter" data-level="3.4" data-path="marxan-analysis.html"><a href="marxan-analysis.html#base-analysis-on-input.dat"><i class="fa fa-check"></i><b>3.4</b> Base analysis on input.dat</a></li>
+<li class="chapter" data-level="3.5" data-path="marxan-analysis.html"><a href="marxan-analysis.html#base-analysis-using-individual-.dat-files"><i class="fa fa-check"></i><b>3.5</b> Base analysis using individual .dat files</a></li>
+<li class="chapter" data-level="3.6" data-path="marxan-analysis.html"><a href="marxan-analysis.html#recreate-the-marxan-analysis-starting-from-the-raw-data"><i class="fa fa-check"></i><b>3.6</b> Recreate the Marxan analysis starting from the raw data</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>4</b> Data</a><ul>
+<li class="chapter" data-level="4.1" data-path="data.html"><a href="data.html#data-import"><i class="fa fa-check"></i><b>4.1</b> Data import</a></li>
+<li class="chapter" data-level="4.2" data-path="data.html"><a href="data.html#planning-unit-data"><i class="fa fa-check"></i><b>4.2</b> Planning unit data</a></li>
+<li class="chapter" data-level="4.3" data-path="data.html"><a href="data.html#vegetation-data"><i class="fa fa-check"></i><b>4.3</b> Vegetation data</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="spatial-prioritizations.html"><a href="spatial-prioritizations.html"><i class="fa fa-check"></i><b>5</b> Spatial prioritizations</a><ul>
+<li class="chapter" data-level="5.1" data-path="spatial-prioritizations.html"><a href="spatial-prioritizations.html#introduction-2"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="spatial-prioritizations.html"><a href="spatial-prioritizations.html#starting-out-simple"><i class="fa fa-check"></i><b>5.2</b> Starting out simple</a></li>
+<li class="chapter" data-level="5.3" data-path="spatial-prioritizations.html"><a href="spatial-prioritizations.html#adding-complexity"><i class="fa fa-check"></i><b>5.3</b> Adding complexity</a></li>
+<li class="chapter" data-level="5.4" data-path="spatial-prioritizations.html"><a href="spatial-prioritizations.html#penalizing-fragmentation"><i class="fa fa-check"></i><b>5.4</b> Penalizing fragmentation</a></li>
+<li class="chapter" data-level="5.5" data-path="spatial-prioritizations.html"><a href="spatial-prioritizations.html#budget-limited-prioritizations"><i class="fa fa-check"></i><b>5.5</b> Budget limited prioritizations</a></li>
+<li class="chapter" data-level="5.6" data-path="spatial-prioritizations.html"><a href="spatial-prioritizations.html#solution-portfolios"><i class="fa fa-check"></i><b>5.6</b> Solution portfolios</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="answers.html"><a href="answers.html"><i class="fa fa-check"></i><b>6</b> Answers</a><ul>
+<li class="chapter" data-level="6.1" data-path="answers.html"><a href="answers.html#redo-marxan-analysis"><i class="fa fa-check"></i><b>6.1</b> Redo Marxan analysis</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="answers.html"><a href="answers.html#base-analysis-on-input.dat-1"><i class="fa fa-check"></i><b>6.1.1</b> Base analysis on input.dat</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="data.html"><a href="data.html#data"><i class="fa fa-check"></i><b>6.2</b> Data</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="answers.html"><a href="answers.html#planning-unit-data-1"><i class="fa fa-check"></i><b>6.2.1</b> Planning unit data</a></li>
+<li class="chapter" data-level="6.2.2" data-path="answers.html"><a href="answers.html#vegetation-data-1"><i class="fa fa-check"></i><b>6.2.2</b> Vegetation data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="spatial-prioritizations.html"><a href="spatial-prioritizations.html#spatial-prioritizations"><i class="fa fa-check"></i><b>6.3</b> Spatial prioritizations</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="answers.html"><a href="answers.html#starting-out-simple-1"><i class="fa fa-check"></i><b>6.3.1</b> Starting out simple</a></li>
+<li class="chapter" data-level="6.3.2" data-path="answers.html"><a href="answers.html#adding-complexity-1"><i class="fa fa-check"></i><b>6.3.2</b> Adding complexity</a></li>
+<li class="chapter" data-level="6.3.3" data-path="answers.html"><a href="answers.html#penalizing-fragmentation-1"><i class="fa fa-check"></i><b>6.3.3</b> Penalizing fragmentation</a></li>
+<li class="chapter" data-level="6.3.4" data-path="answers.html"><a href="answers.html#budget-limited-prioritizations-1"><i class="fa fa-check"></i><b>6.3.4</b> Budget limited prioritizations</a></li>
+<li class="chapter" data-level="6.3.5" data-path="answers.html"><a href="answers.html#solution-portfolios-1"><i class="fa fa-check"></i><b>6.3.5</b> Solution portfolios</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i><b>7</b> Acknowledgements</a></li>
+<li class="chapter" data-level="8" data-path="session-information.html"><a href="session-information.html"><i class="fa fa-check"></i><b>8</b> Session information</a></li>
+<li class="chapter" data-level="9" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>9</b> References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">PRIORITIZR WORKSHOP MANUAL</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="marxan-analysis" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Redo Marxan analysis</h1>
+<div id="introduction-1" class="section level2">
+<h2><span class="header-section-number">3.1</span> Introduction</h2>
+<p>Before we begin to prioritize areas for protected area establishment using the full feature set of <em>prioritizr</em>, we will re-do the Marxan analysis from Tuesday in <em>prioritizr</em>. This exercise is meant to show you how you can use your current Marxan files in prioritizr, if you choose to do so. Once we have run the example using input.dat, as well as the individual .dat files, we will also work on preparing the data you worked with on Monday to be used in prioritzr. Once that’s complete, we will run our first <em>prioritizr</em> analysis, using the notation typical for prioritizr analysis.</p>
+</div>
+<div id="starting-out" class="section level2">
+<h2><span class="header-section-number">3.2</span> Starting out</h2>
+<p>We will start by opening RStudio. Ideally, you will have already installed both R and Rstudio before the workshop. If you have not done this already, then please see the <a href="introduction.html#setup">Setting up your computer</a> section. <strong>During this workshop, please do not copy and paste code from the workshop manual into RStudio. Instead, please write it out yourself in an R script.</strong> When programming, you will spend a lot of time fixing coding mistakes—that is, debugging your code—so it is best to get used to making mistakes now when you have people here to help you. You can create a new R script by clicking on <em>File</em> in the RStudio menu bar, then <em>New File</em>, and then <em>R Script</em>.</p>
+<p><img src="images/rstudio-new-script.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>After creating a new script, you will notice that a new <em>Source</em> panel has appeared. In the <em>Source</em> panel, you can type and edit code before you run it. You can run code in the <em>Source</em> panel by placing the cursor (i.e. the blinking line) on the desired line of code and pressing <code>Control + Enter</code> on your keyboard (or <code>CMD + Enter</code> if you are using an Apple computer). You can save the code in the <em>Source</em> panel by pressing <code>Control + s</code> on your keyboard (or <code>CMD + s</code> if you are using an Apple computer).</p>
+<p><img src="images/rstudio-source.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>You can also make notes and write your answers to the workshop questions inside the R script. When writing notes and answers, add a <code>#</code> symbol so that the text following the <code>#</code> symbol is treated as a comment and not code. This means that you don’t have to worry about highlighting specific parts of the script to avoid errors.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># this is a comment and R will ignore this text if you run it</span>
+<span class="co"># R will run the code below because it does not start with a # symbol</span>
+<span class="kw">print</span>(<span class="st">&quot;this is not a comment&quot;</span>)</code></pre></div>
+<pre><code>## [1] &quot;this is not a comment&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># you can also add comments to the same line of R code too</span>
+<span class="kw">print</span>(<span class="st">&quot;this is also not a comment&quot;</span>) <span class="co"># but this is a comment</span></code></pre></div>
+<pre><code>## [1] &quot;this is also not a comment&quot;</code></pre>
+<p><strong>Remember to save your script regularly to ensure that you don’t lose anything in the event that RStudio crashes (e.g. using <code>Control + s</code> or <code>CMD + s</code>)!</strong></p>
+</div>
+<div id="attaching-packages" class="section level2">
+<h2><span class="header-section-number">3.3</span> Attaching packages</h2>
+<p>Now we will set up our R session for the workshop. Specifically, enter the following R code to attach the R packages used in this workshop.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># load packages</span>
+<span class="kw">library</span>(tidyverse)
+<span class="kw">library</span>(prioritizr)
+<span class="kw">library</span>(rgdal)
+<span class="kw">library</span>(raster)
+<span class="kw">library</span>(rgeos)
+<span class="kw">library</span>(mapview)
+<span class="kw">library</span>(units)
+<span class="kw">library</span>(scales)
+<span class="kw">library</span>(assertthat)
+<span class="kw">library</span>(gridExtra)
+<span class="kw">library</span>(data.table)
+<span class="kw">library</span>(readxl)</code></pre></div>
+</div>
+<div id="base-analysis-on-input.dat" class="section level2">
+<h2><span class="header-section-number">3.4</span> Base analysis on input.dat</h2>
+<p>Now we will redo the Marxan analyis you have done on Tuesday, but using <em>prioritzr</em>. To do so we need the <em>Marxan database</em> you used on Tuesday, as well we the <em>raw data</em> you used on Monday. The files for both are already included in the R Studio project you received for this exercise. Now please open the <em>PacMara_workshop.Rproj</em> file by double clicking it. You are now ready to start with the exercise.</p>
+<p>First, we are going to use the information from the input.dat file to run the analysis you completed on Tuesday, using <em>prioritzr</em>. To do so, all you need to do is point to input.dat and tell <em>prioritizr</em> where to find it. Once that’s done we can generate the problem and solve it.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">input_file &lt;-<span class="st"> &quot;Marxan_database/input.dat&quot;</span>
+
+p1 &lt;-<span class="st"> </span><span class="kw">marxan_problem</span>(input_file)
+
+s1 &lt;-<span class="st"> </span><span class="kw">solve</span>(p1)</code></pre></div>
+<p>Next, we are going to have a look at the solution and explore the output by first displaying a couple of rows from the output data, then counting the number of planning units in the solution and calcualating the proportion of planning units in the solution.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(s1)</code></pre></div>
+<pre><code>##   id    cost status locked_in locked_out solution_1
+## 1  1 2000000      0     FALSE      FALSE          1
+## 2  2 2000000      0     FALSE      FALSE          1
+## 3  3 2000000      0     FALSE      FALSE          1
+## 4  4 2000000      0     FALSE      FALSE          1
+## 5  5 2000000      0     FALSE      FALSE          1
+## 6  6 2000000      0     FALSE      FALSE          1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># count number of planning units in solution</span>
+<span class="kw">sum</span>(s1<span class="op">$</span>solution_<span class="dv">1</span>)</code></pre></div>
+<pre><code>## [1] 3262</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># proportion of planning units in solution</span>
+<span class="kw">mean</span>(s1<span class="op">$</span>solution_<span class="dv">1</span>)</code></pre></div>
+<pre><code>## [1] 0.2683669</code></pre>
+<p>Next we are going to explore how well the features are represented in the solution.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># calculate feature representation</span>
+r1 &lt;-<span class="st"> </span><span class="kw">feature_representation</span>(p1, s1[, <span class="st">&quot;solution_1&quot;</span>, <span class="dt">drop =</span> <span class="ot">FALSE</span>])
+<span class="kw">print</span>(r1)</code></pre></div>
+<pre><code>## # A tibble: 19 x 3
+##    feature      absolute_held relative_held
+##    &lt;chr&gt;                &lt;dbl&gt;         &lt;dbl&gt;
+##  1 0-20 Hard        213510000         0.300
+##  2 0-20 Muddy       145420000         0.302
+##  3 0-20 Sandy        45810000         0.301
+##  4 20-50 Hard       842380000         0.300
+##  5 20-50 Muddy      120580000         0.300
+##  6 20-50 Sandy       93400000         0.300
+##  7 200+ Hard        136480000         0.300
+##  8 200+ Muddy       870960000         0.300
+##  9 200+ Sandy      1075960000         0.300
+## 10 200+ UnId       2025510000         0.300
+## 11 50-200 Hard     2151230000         0.300
+## 12 50-200 Muddy    1080500000         0.300
+## 13 50-200 Sandy    3347250000         0.300
+## 14 50-200 UnId        3260000         0.337
+## 15 iba             1991070000         0.300
+## 16 kelp              51940000         0.305
+## 17 killer whale    1596950000         0.386
+## 18 sealions         697060000         0.494
+## 19 seaotters       1596000000         0.3</code></pre>
+<p>Finally, we are going to visualize the solution by converting the solution to a spatial object.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pulayer &lt;-<span class="st"> </span><span class="kw">readOGR</span>(<span class="st">&quot;Marxan_database/pulayer/pulayer_BC_marine.shp&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre><code>## OGR data source with driver: ESRI Shapefile 
+## Source: &quot;/home/travis/build/prioritizr/PacMara_workshop/Marxan_database/pulayer/pulayer_BC_marine.shp&quot;, layer: &quot;pulayer_BC_marine&quot;
+## with 12155 features
+## It has 1 fields
+## Integer64 fields read as strings:  PUID</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pulayer1 &lt;-<span class="st"> </span>pulayer
+pulayer1<span class="op">$</span>solution_<span class="dv">1</span> &lt;-<span class="st"> </span>s1<span class="op">$</span>solution_<span class="dv">1</span>
+pulayer1<span class="op">$</span>solution_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">factor</span>(pulayer1<span class="op">$</span>solution_<span class="dv">1</span>)
+<span class="kw">spplot</span>(pulayer1, <span class="st">&quot;solution_1&quot;</span>, <span class="dt">col.regions =</span> <span class="kw">c</span>(<span class="st">&quot;grey90&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>),
+       <span class="dt">main =</span> <span class="st">&quot;marxan_problem solution&quot;</span>)</code></pre></div>
+<p><img src="prioritizr-workshop-manual_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Now, think about the following questions.</p>
+
+<div class="rmdquestion">
+<ol style="list-style-type: decimal">
+<li>Are the results from Marxan and prioritizr the same/similar?</li>
+<li>If you see differences, why do you think those differences occur?</li>
+<li>Can you think of ways to reduce difference/improve outcomes?
+</div>
+</li>
+</ol>
+
+</div>
+<div id="base-analysis-using-individual-.dat-files" class="section level2">
+<h2><span class="header-section-number">3.5</span> Base analysis using individual .dat files</h2>
+<p>Now, lets redo the analysis, but instead of using input.dat, we will use the individual .dat files to create the problem. You will see that the syntax for the problem formulation is very similar, but instead of supplying one value to the <em>marxan_problem</em> function, we now specify <em>pu</em>, <em>spec</em>, <em>puvsp</em> and <em>bound</em>. If you want to learn more about the <em>marxan_problem</em> function, just type in <code>?marxan_problem</code> and you can have a look at the function help page.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pu &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st">&quot;Marxan_database/input/pu.dat&quot;</span>, <span class="dt">data.table =</span> <span class="ot">FALSE</span>)
+spec &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st">&quot;Marxan_database/input/spec.dat&quot;</span>, <span class="dt">data.table =</span> <span class="ot">FALSE</span>)
+puvsp &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st">&quot;Marxan_database/input/puvsp.dat&quot;</span>, <span class="dt">data.table =</span> <span class="ot">FALSE</span>)
+bound &lt;-<span class="st"> </span><span class="kw">fread</span>(<span class="st">&quot;Marxan_database/input/bound.dat&quot;</span>, <span class="dt">data.table =</span> <span class="ot">FALSE</span>)
+
+p2 &lt;-<span class="st"> </span><span class="kw">marxan_problem</span>(<span class="dt">x =</span> pu, <span class="dt">spec =</span> spec, <span class="dt">puvspr =</span> puvsp)
+
+s2 &lt;-<span class="st"> </span><span class="kw">solve</span>(p2)
+
+<span class="co"># count number of planning units in solution</span>
+<span class="kw">sum</span>(s2<span class="op">$</span>solution_<span class="dv">1</span>)</code></pre></div>
+<pre><code>## [1] 3261</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># proportion of planning units in solution</span>
+<span class="kw">mean</span>(s2<span class="op">$</span>solution_<span class="dv">1</span>)</code></pre></div>
+<pre><code>## [1] 0.2682847</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># calculate feature representation</span>
+r2 &lt;-<span class="st"> </span><span class="kw">feature_representation</span>(p2, s2[, <span class="st">&quot;solution_1&quot;</span>, <span class="dt">drop =</span> <span class="ot">FALSE</span>])
+<span class="kw">print</span>(r2)</code></pre></div>
+<pre><code>## # A tibble: 19 x 3
+##    feature      absolute_held relative_held
+##    &lt;chr&gt;                &lt;dbl&gt;         &lt;dbl&gt;
+##  1 0-20 Hard        213530000         0.300
+##  2 0-20 Muddy       145420000         0.302
+##  3 0-20 Sandy        45940000         0.302
+##  4 20-50 Hard       842510000         0.300
+##  5 20-50 Muddy      120590000         0.300
+##  6 20-50 Sandy       93640000         0.301
+##  7 200+ Hard        136630000         0.300
+##  8 200+ Muddy       871080000         0.300
+##  9 200+ Sandy      1075970000         0.300
+## 10 200+ UnId       2025510000         0.300
+## 11 50-200 Hard     2150800000         0.300
+## 12 50-200 Muddy    1081840000         0.301
+## 13 50-200 Sandy    3347430000         0.300
+## 14 50-200 UnId        3260000         0.337
+## 15 iba             1992240000         0.300
+## 16 kelp              51570000         0.303
+## 17 killer whale    1594570000         0.385
+## 18 sealions         702660000         0.498
+## 19 seaotters       1596000000         0.3</code></pre>
+</div>
+<div id="recreate-the-marxan-analysis-starting-from-the-raw-data" class="section level2">
+<h2><span class="header-section-number">3.6</span> Recreate the Marxan analysis starting from the raw data</h2>
+<p>Now that we have solved a problem that was formatted the way Marxan needs data, lets go ahead and start from the raw data, as you did on Monday.</p>
+<p>We will first process the data, so we can use it in <em>prioriztr</em> and then we will create the problem and solve it in the ‘standard’ <em>prioritizr</em> way.</p>
+<p>Starting with the raw data from folder <em>Marxan_Data</em> we will go ahead and create our problem. First, lets load all the data we need in terms of features:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># We first load this Excel file to extract feature names later</span>
+feat_ids &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="st">&quot;Marxan_Data/conservation_feats_ids.xlsx&quot;</span>)
+
+<span class="co"># now lets load all the rasters we need</span>
+iba &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&quot;Marxan_Data/iba_bc.tif&quot;</span>)
+kelp &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&quot;Marxan_Data/kelp_bc.tif&quot;</span>)
+killerw &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&quot;Marxan_Data/killerwhale.tif&quot;</span>)
+seal &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&quot;Marxan_Data/sealions.tif&quot;</span>)
+seao &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&quot;Marxan_Data/seaotter.tif&quot;</span>)
+
+benthic &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&quot;Marxan_Data/benthic14cl.tif&quot;</span>)
+
+<span class="co"># benthic and the rest of the rasters are not exactly in the same format (same number of rows and columns)</span>
+<span class="co"># so we need to go ahead and make sure benthic has the same format as the other rasters.</span>
+benthic &lt;-<span class="st"> </span><span class="kw">resample</span>(benthic, iba, <span class="dt">method=</span><span class="st">&quot;ngb&quot;</span>)</code></pre></div>
+<p>Now that we have loaded all the feature data into R, we need to go ahead and create the benthic classes, you have used to setup the Marxan problem before. This is specific to the way the benthic raster is setup and will differ from case to case in real world examples you might explore in the future.</p>
+<p>In this specfic case, we know that benthic has a total of 14 classes, so the R code below does split the benthic raster up into 14 rasters, based on cell values, and at the end puts them together in a stack.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">benthic_values &lt;-<span class="st"> </span><span class="kw">values</span>(benthic)
+ben_list &lt;-<span class="st"> </span><span class="kw">list</span>()
+<span class="cf">for</span>(ii <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">14</span>){
+  tmp_r &lt;-<span class="st"> </span>benthic
+  tmp_r_val &lt;-<span class="st"> </span>benthic_values
+  tmp_r_val &lt;-<span class="st"> </span><span class="kw">ifelse</span>(tmp_r_val <span class="op">==</span><span class="st"> </span>ii, <span class="dv">1</span>, <span class="ot">NA</span>)
+  <span class="kw">values</span>(tmp_r) &lt;-<span class="st"> </span>tmp_r_val
+  
+  ben_list[[ii]] &lt;-<span class="st"> </span>tmp_r
+    
+  <span class="kw">rm</span>(tmp_r, tmp_r_val)
+  
+}
+ben_stack &lt;-<span class="st"> </span><span class="kw">stack</span>(ben_list)</code></pre></div>
+<p>Now that all rasters have been created, we can combine them in a stack and give them the names from the Excel file we read in earlier.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">features &lt;-<span class="st"> </span><span class="kw">stack</span>(ben_stack, iba, kelp, killerw, seal, seao)
+<span class="kw">names</span>(features) &lt;-<span class="st"> </span>feat_ids<span class="op">$</span>New_Name</code></pre></div>
+<p>Next, we load in the fishcost layer and also resample it to fit the rest of the raster layers.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fishcost &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&quot;Marxan_Data/fishcost.tif&quot;</span>)
+fishcost &lt;-<span class="st"> </span><span class="kw">resample</span>(fishcost, iba, <span class="dt">method=</span><span class="st">&quot;ngb&quot;</span>)</code></pre></div>
+<p>Now its time to setup the <em>prioritizr</em> problem. As a first step, we are reading in the pulayer from the <em>Marxan_database</em>. I’m doing this to show you a nice way to setup the <em>prioritizr</em> problem, using a shapefile directly in the <code>problem</code> function call. We need to extract the fishcost data to that pulayer, before we can use this information in the <code>problem</code> formulation.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pulayer &lt;-<span class="st"> </span><span class="kw">readOGR</span>(<span class="st">&quot;Marxan_database/pulayer/pulayer_BC_marine.shp&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<pre><code>## OGR data source with driver: ESRI Shapefile 
+## Source: &quot;/home/travis/build/prioritizr/PacMara_workshop/Marxan_database/pulayer/pulayer_BC_marine.shp&quot;, layer: &quot;pulayer_BC_marine&quot;
+## with 12155 features
+## It has 1 fields
+## Integer64 fields read as strings:  PUID</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pulayer<span class="op">$</span>cost &lt;-<span class="st"> </span><span class="kw">as.vector</span>(<span class="kw">fast_extract</span>(fishcost, pulayer))</code></pre></div>
+<p>Now for the actual <code>problem</code> formulation. You will see that we use the pulayer as one of the inputs to the <code>problem</code> function. As pulayer is a shapefile, we need to tell <em>prioritzr</em> which attribute to use as the cost column. We also include the features raster stack directly in the <code>problem</code> function. We also set the objective function (minumum set), the relative targets (0.3 or 30% of each feature), and the decision type (binary for integer linear programming).</p>
+<p>When that’s done we can solve the problem.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p3 &lt;-<span class="st"> </span><span class="kw">problem</span>(pulayer, <span class="dt">cost_column =</span> <span class="st">&quot;cost&quot;</span>, <span class="dt">features =</span> features, <span class="dt">run_checks =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">add_min_set_objective</span>() <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">add_relative_targets</span>(<span class="fl">0.3</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">add_binary_decisions</span>() 
+
+s3 &lt;-<span class="st"> </span><span class="kw">solve</span>(p3)</code></pre></div>
+<p>As we have done before, we will now go ahead and extract summary statistics as well as plot the results. We just worked through an entire <em>prioritzr</em> problem, from reading and processing raw data to setting up and solving a <code>problem</code>, to extracting statistics and spatial visualization of results.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># count number of planning units in solution</span>
+<span class="kw">sum</span>(s3<span class="op">$</span>solution_<span class="dv">1</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>## [1] 2332</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># proportion of planning units in solution</span>
+<span class="kw">mean</span>(s3<span class="op">$</span>solution_<span class="dv">1</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>## [1] 0.1919816</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">s3<span class="op">$</span>solution_<span class="dv">1</span> &lt;-<span class="st"> </span><span class="kw">factor</span>(s3<span class="op">$</span>solution_<span class="dv">1</span>)
+<span class="kw">spplot</span>(s3, <span class="st">&quot;solution_1&quot;</span>, <span class="dt">col.regions =</span> <span class="kw">c</span>(<span class="st">&quot;grey90&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>),
+       <span class="dt">main =</span> <span class="st">&quot;problem solution&quot;</span>)</code></pre></div>
+<p><img src="prioritizr-workshop-manual_files/figure-html/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
