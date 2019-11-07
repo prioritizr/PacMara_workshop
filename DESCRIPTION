@@ -12,6 +12,13 @@ Imports:
   sp,
   rgeos,
   rgdal,
+  Rsymphony,
+  prioritizr,
+  prioritizrdata,
+  mapview,
+  units,
+  velox,
+  lpsymphony,
   gridExtra,
   readxl,
   data.table
