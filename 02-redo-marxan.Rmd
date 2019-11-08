@@ -4,6 +4,8 @@
 
 Before we begin to prioritize areas for protected area establishment using the full feature set of _prioritizr_, we will re-do the Marxan analysis from Tuesday in _prioritizr_. This exercise is meant to show you how you can use your current Marxan files in prioritizr, if you choose to do so. Once we have run the example using input.dat, as well as the individual .dat files, we will also work on preparing the data you worked with on Monday to be used in prioritzr. Once that's complete, we will run our first _prioritizr_ analysis, using the notation typical for prioritizr analysis.
 
+The data for this exercise were provided by [PacMara](https://pacmara.org/) and [BCMCA](https://bcmca.ca/maps-data/browse-or-search/).
+
 
 ## Starting out
 
