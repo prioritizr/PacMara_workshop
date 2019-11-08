@@ -1,0 +1,44 @@
+<PAMDataset>
+  <Metadata>
+    <MDI key="DataType">Generic</MDI>
+  </Metadata>
+  <PAMRasterBand band="1">
+    <Histograms>
+      <HistItem>
+        <HistMin>1</HistMin>
+        <HistMax>14</HistMax>
+        <BucketCount>256</BucketCount>
+        <IncludeOutOfRange>1</IncludeOutOfRange>
+        <Approximate>0</Approximate>
+        <HistCounts>71744|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|48344|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|15226|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|280805|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|40251|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|31102|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|45483|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|290327|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|358566|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|674797|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|716908|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|360112|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1115746|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|967</HistCounts>
+      </HistItem>
+      <HistItem>
+        <HistMin>0.5357142857142857</HistMin>
+        <HistMax>14.46428571428571</HistMax>
+        <BucketCount>14</BucketCount>
+        <IncludeOutOfRange>0</IncludeOutOfRange>
+        <Approximate>1</Approximate>
+        <HistCounts>179|143|27|757|104|66|144|1116|1308|198|2387|1331|2877|0</HistCounts>
+      </HistItem>
+      <HistItem>
+        <HistMin>0.5357142857142857</HistMin>
+        <HistMax>14.46428571428571</HistMax>
+        <BucketCount>14</BucketCount>
+        <IncludeOutOfRange>0</IncludeOutOfRange>
+        <Approximate>0</Approximate>
+        <HistCounts>71744|48344|15226|280805|40251|31102|45483|290327|358566|674797|716908|360112|1115746|967</HistCounts>
+      </HistItem>
+    </Histograms>
+    <Metadata>
+      <MDI key="RepresentationType">THEMATIC</MDI>
+      <MDI key="STATISTICS_COVARIANCES">8.722579296907925</MDI>
+      <MDI key="STATISTICS_MAXIMUM">14</MDI>
+      <MDI key="STATISTICS_MEAN">10.139010729369</MDI>
+      <MDI key="STATISTICS_MINIMUM">1</MDI>
+      <MDI key="STATISTICS_SKIPFACTORX">1</MDI>
+      <MDI key="STATISTICS_SKIPFACTORY">1</MDI>
+      <MDI key="STATISTICS_STDDEV">2.9534009452469</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">44.7</MDI>
+    </Metadata>
+  </PAMRasterBand>
+</PAMDataset>
