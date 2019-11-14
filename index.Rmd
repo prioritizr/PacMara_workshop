@@ -2,19 +2,21 @@
 title: "PRIORITIZR WORKSHOP MANUAL"
 author: "Jeffrey O. Hanson (with modifications by Richard Schuster)"
 date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
-documentclass: book
-bibliography: references.bib
-csl: reference-style.csl
-url: 'https\://prioritizr.github.io/PacMara_workshop'
-link-citations: yes
+output: pdf_document
 cover-image: images/cover.png
+description: Manual for the prioritizr module of the Introduction to Marxan & MarZone
+  & Prioritizr - Training Course held at University of Victoria, Victoria, Canada.
+documentclass: book
 favicon: favicon.ico
-github-repo: prioritizr/PacMara_workshop
 fontsize: 12pt
+geometry: left=2.54cm, right=2.54cm, top=2.54cm, bottom=2.54cm
+github-repo: prioritizr/PacMara_workshop
+link-citations: yes
+csl: reference-style.csl
+site: bookdown::bookdown_site
+bibliography: references.bib
+url: https\://prioritizr.github.io/PacMara_workshop
 urlcolor: blue
-geometry: "left=2.54cm, right=2.54cm, top=2.54cm, bottom=2.54cm"
-description: "Manual for the prioritizr module of the Introduction to Marxan & MarZone & Prioritizr - Training Course held at University of Victoria, Victoria, Canada."
 ---
 
 # Welcome!

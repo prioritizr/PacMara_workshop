@@ -112,7 +112,10 @@ Now, think about the following questions.
 1. Are the results from Marxan and prioritizr the same/similar?
 2. If you see differences, why do you think those differences occur?
 3. Can you think of ways to reduce difference/improve outcomes?
+
+
 ```
+
 
 \clearpage
 
