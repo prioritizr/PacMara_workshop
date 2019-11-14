@@ -24,7 +24,7 @@
 <meta name="author" content="Jeffrey O. Hanson (with modifications by Richard Schuster)" />
 
 
-<meta name="date" content="2019-11-13" />
+<meta name="date" content="2019-11-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -90,6 +90,7 @@ code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* Com
 code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -102,6 +103,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
+<li><a href="./">PRIORITIZR WORKSHOP MANUAL</a></li>
+
+<li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome!</a></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
 <li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#overview"><i class="fa fa-check"></i><b>2.1</b> Overview</a></li>
@@ -318,8 +322,8 @@ p4 &lt;-<span class="st"> </span><span class="kw">problem</span>(pu_data, veg_da
 ##   objective:      Minimum set objective 
 ##   targets:        Relative targets [targets (min: 0.2, max: 0.2)]
 ##   decisions:      Binary decision 
-##   constraints:    &lt;Locked out planning units [132 locked units]
-##                    Locked in planning units [257 locked units]&gt;
+##   constraints:    &lt;Locked in planning units [257 locked units]
+##                    Locked out planning units [132 locked units]&gt;
 ##   penalties:      &lt;none&gt;
 ##   portfolio:      default
 ##   solver:         Lpsymphony [first_feasible (0), gap (0.1), time_limit (-1), verbose (0)]</code></pre>
@@ -368,8 +372,8 @@ p5 &lt;-<span class="st"> </span><span class="kw">problem</span>(pu_data, veg_da
 ##   objective:      Minimum set objective 
 ##   targets:        Relative targets [targets (min: 0.2, max: 0.2)]
 ##   decisions:      Binary decision 
-##   constraints:    &lt;Locked in planning units [257 locked units]
-##                    Locked out planning units [132 locked units]&gt;
+##   constraints:    &lt;Locked out planning units [132 locked units]
+##                    Locked in planning units [257 locked units]&gt;
 ##   penalties:      &lt;Boundary penalties [edge factor (min: 0.5, max: 0.5), penalty (5e-04), zones]&gt;
 ##   portfolio:      default
 ##   solver:         Lpsymphony [first_feasible (0), gap (1), time_limit (-1), verbose (0)]</code></pre>
@@ -430,8 +434,8 @@ p6 &lt;-<span class="st"> </span><span class="kw">problem</span>(pu_data, veg_da
 ##   objective:      Maximum representation objective [budget (8575.56009869836)]
 ##   targets:        Relative targets [targets (min: 0.2, max: 0.2)]
 ##   decisions:      Binary decision 
-##   constraints:    &lt;Locked in planning units [257 locked units]
-##                    Locked out planning units [132 locked units]&gt;
+##   constraints:    &lt;Locked out planning units [132 locked units]
+##                    Locked in planning units [257 locked units]&gt;
 ##   penalties:      &lt;none&gt;
 ##   portfolio:      default
 ##   solver:         Lpsymphony [first_feasible (0), gap (0.1), time_limit (-1), verbose (0)]</code></pre>
@@ -492,8 +496,8 @@ p7 &lt;-<span class="st"> </span><span class="kw">problem</span>(pu_data, veg_da
 ##   objective:      Maximum representation objective [budget (8575.56009869836)]
 ##   targets:        Relative targets [targets (min: 0.2, max: 0.2)]
 ##   decisions:      Binary decision 
-##   constraints:    &lt;Locked in planning units [257 locked units]
-##                    Locked out planning units [132 locked units]&gt;
+##   constraints:    &lt;Locked out planning units [132 locked units]
+##                    Locked in planning units [257 locked units]&gt;
 ##   penalties:      &lt;Feature weights [weights (min: 1, max: 10)]&gt;
 ##   portfolio:      default
 ##   solver:         Lpsymphony [first_feasible (0), gap (0.1), time_limit (-1), verbose (0)]</code></pre>
@@ -575,11 +579,11 @@ s8 &lt;-<span class="st"> </span><span class="kw">solve</span>(p8)
 <pre><code>## [1] 2169.162</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># calculate the cost of the second solution</span>
 <span class="kw">sum</span>(s8<span class="op">$</span>solution_<span class="dv">2</span> <span class="op">*</span><span class="st"> </span>s8<span class="op">$</span>cost)</code></pre></div>
-<pre><code>## [1] 2142.005</code></pre>
+<pre><code>## [1] 2163.918</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># calculate the proportion of planning units with the same solution values</span>
 <span class="co"># in the first and second solutions</span>
 <span class="kw">mean</span>(s8<span class="op">$</span>solution_<span class="dv">1</span> <span class="op">==</span><span class="st"> </span>s8<span class="op">$</span>solution_<span class="dv">2</span>)</code></pre></div>
-<pre><code>## [1] 0.9654867</code></pre>
+<pre><code>## [1] 0.9699115</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># plot first solution</span>
 <span class="kw">spplot</span>(s8, <span class="st">&quot;solution_1&quot;</span>, <span class="dt">col.regions =</span> <span class="kw">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>),
        <span class="dt">main =</span> <span class="st">&quot;s8 (solution 1)&quot;</span>)</code></pre></div>
@@ -640,8 +644,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/prioritizr/cibio-workshop/edit/master/04-prioritizations.Rmd",
+"text": "Edit"
 },
 "history": {
 "link": null,
@@ -651,7 +655,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["prioritizr-workshop-manual.pdf"],
 "toc": {
 "collapse": "subsection"
 }
