@@ -5,6 +5,7 @@
 
 Materials for the prioritizr module of the [_Introduction to Marxan & MarZone & Prioritizr - Training Course_](https://pacmara.org/) held at University of Victoria, Victoria, Canada during 19th - 21st November 2019.
 
-* The slideshow for the lecture can be [downloaded here](https://github.com/prioritizr/PacMara_workshop/raw/master/slides.pptx).
+* The slideshow for the introduction lecture can be [downloaded here](https://github.com/prioritizr/PacMara_workshop/raw/master/slides/Talk1_Introduction_to_prioritzr.pptx).
 * The workshop manual is available [online](https://prioritizr.github.io/PacMara_workshop/) and can be [downloaded here](https://prioritizr.github.io/PacMara_workshop/prioritizr-workshop-manual.pdf).
 * The data for the workshop can be [downloaded here](https://github.com/prioritizr/PacMara_workshop/raw/master/data.zip).
+* The slideshow for the case study introduction can be [downloaded here](https://github.com/prioritizr/PacMara_workshop/raw/master/slides/Talk2_prioritzr_shiny_interface.pptx).
