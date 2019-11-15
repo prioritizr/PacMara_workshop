@@ -24,7 +24,7 @@
 <meta name="author" content="Jeffrey O. Hanson (with modifications by Richard Schuster)" />
 
 
-<meta name="date" content="2019-11-14" />
+<meta name="date" content="2019-11-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -322,8 +322,8 @@ p4 &lt;-<span class="st"> </span><span class="kw">problem</span>(pu_data, veg_da
 ##   objective:      Minimum set objective 
 ##   targets:        Relative targets [targets (min: 0.2, max: 0.2)]
 ##   decisions:      Binary decision 
-##   constraints:    &lt;Locked in planning units [257 locked units]
-##                    Locked out planning units [132 locked units]&gt;
+##   constraints:    &lt;Locked out planning units [132 locked units]
+##                    Locked in planning units [257 locked units]&gt;
 ##   penalties:      &lt;none&gt;
 ##   portfolio:      default
 ##   solver:         Lpsymphony [first_feasible (0), gap (0.1), time_limit (-1), verbose (0)]</code></pre>
@@ -372,8 +372,8 @@ p5 &lt;-<span class="st"> </span><span class="kw">problem</span>(pu_data, veg_da
 ##   objective:      Minimum set objective 
 ##   targets:        Relative targets [targets (min: 0.2, max: 0.2)]
 ##   decisions:      Binary decision 
-##   constraints:    &lt;Locked out planning units [132 locked units]
-##                    Locked in planning units [257 locked units]&gt;
+##   constraints:    &lt;Locked in planning units [257 locked units]
+##                    Locked out planning units [132 locked units]&gt;
 ##   penalties:      &lt;Boundary penalties [edge factor (min: 0.5, max: 0.5), penalty (5e-04), zones]&gt;
 ##   portfolio:      default
 ##   solver:         Lpsymphony [first_feasible (0), gap (1), time_limit (-1), verbose (0)]</code></pre>
@@ -579,11 +579,11 @@ s8 &lt;-<span class="st"> </span><span class="kw">solve</span>(p8)
 <pre><code>## [1] 2169.162</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># calculate the cost of the second solution</span>
 <span class="kw">sum</span>(s8<span class="op">$</span>solution_<span class="dv">2</span> <span class="op">*</span><span class="st"> </span>s8<span class="op">$</span>cost)</code></pre></div>
-<pre><code>## [1] 2163.918</code></pre>
+<pre><code>## [1] 2135.941</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># calculate the proportion of planning units with the same solution values</span>
 <span class="co"># in the first and second solutions</span>
 <span class="kw">mean</span>(s8<span class="op">$</span>solution_<span class="dv">1</span> <span class="op">==</span><span class="st"> </span>s8<span class="op">$</span>solution_<span class="dv">2</span>)</code></pre></div>
-<pre><code>## [1] 0.9699115</code></pre>
+<pre><code>## [1] 0.9663717</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># plot first solution</span>
 <span class="kw">spplot</span>(s8, <span class="st">&quot;solution_1&quot;</span>, <span class="dt">col.regions =</span> <span class="kw">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;darkgreen&quot;</span>),
        <span class="dt">main =</span> <span class="st">&quot;s8 (solution 1)&quot;</span>)</code></pre></div>
